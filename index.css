@@ -1,7 +1,1137 @@
-body{
-    color:red;
+:root {
+  /* Brand colors - These are overridden dynamically by JavaScript from CONFIG.colors */
+    /* console.log('Custom Client Portal Script Loaded v1.0'); */
+
+  /* Layout colors */
+  --bg-main: #f0f4f8;
+  --bg-card: #ffffff;
+  --text-dark: #1e293b;
+  --text-medium: #5a6b8a;
+  --text-light: #8a9bb5;
+  --text-secondary: #64748b;
+  --border: #e2e8f0;
+
+  /* Status colors */
+  --success: #059669;
+  --success-bg: #d1fae5;
+  --warning: #d97706;
+  --warning-bg: #fef3c7;
+  --error: #dc2626;
+  --error-bg: #fee2e2;
+  --info: #2563eb;
+  --info-bg: #dbeafe;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
 }
 
-body{
-    color:rgb(209, 17, 17);
+
+/* //hide invoices view all link */
+#custom-cards-container + div > .overflow-auto:has(#contracts-view-all) {
+  display: none !important;
+}
+
+/* Order Selector Styles */
+.custom-order-selector {
+  margin-bottom: 1.5rem;
+}
+
+.custom-order-dropdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  width: auto;
+  min-width: 300px;
+}
+
+.custom-order-dropdown:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.custom-order-dropdown:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.custom-order-dropdown option {
+  padding: 0.5rem;
+}
+
+.custom-order-dropdown-label {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.custom-order-dropdown-value {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* Main Container */
+#custom-cards-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.custom-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.custom-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.custom-card-title {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+}
+
+.custom-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Progress Card Styles */
+.custom-progress-container {
+  position: relative;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.custom-progress-steps {
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  border-radius: 20px;
+  padding: 8px;
+  gap: 6px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.custom-progress-step {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 10px;
+  border-radius: 50px;
+  color: #9ca3af;
+  font-size: 13px;
+  position: relative;
+  width: 90%;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-step-indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.custom-progress-step.completed {
+  color: var(--primary);
+}
+
+.custom-progress-step.completed .custom-step-indicator {
+  background: var(--primary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.custom-progress-step.active {
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--primary-hover) 100%
+  );
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.custom-progress-step.active .custom-step-indicator {
+  background: #fff;
+  color: var(--primary);
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.custom-step-label {
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+
+.custom-progress-status {
+  margin-top: 1.25rem;
+  font-size: 14px;
+  color: #4b5563;
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Financial Card Styles */
+.custom-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.custom-info-label {
+  color: var(--text-medium);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.custom-info-value {
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.custom-financial-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.custom-financial-row:last-of-type {
+  border-bottom: none;
+}
+
+.custom-financial-label {
+  color: var(--text-medium);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.custom-financial-value {
+  color: var(--text-dark);
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.custom-balance-amount {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+}
+
+.custom-balance-due {
+  color: var(--warning);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.custom-balance-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  margin-top: 0.5rem;
+}
+
+.custom-balance-label {
+  color: var(--text-medium);
+  font-size: 0.95rem;
+}
+
+.custom-btn-group {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.custom-btn {
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+}
+
+.custom-btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.custom-btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.custom-btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-dark);
+  border: 1px solid var(--border);
+}
+
+.custom-btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Products Card Styles */
+.custom-product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.custom-product-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--bg-main);
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+.custom-product-item:hover {
+  background: var(--primary-light);
+}
+
+.custom-product-image {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  background: var(--border);
+}
+
+.custom-product-info h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+}
+
+.custom-product-info p {
+  font-size: 0.85rem;
+  color: var(--text-medium);
+}
+
+/* Documents Display Area Styles */
+.custom-documents-area {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Photo Gallery Styles */
+.photo-showcase-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.photo-tab-btn {
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--bg-main);
+  border: 1px solid transparent;
+  color: var(--text-medium);
+}
+
+.photo-tab-btn.tab-active {
+  background: var(--primary);
+  color: white;
+}
+
+.photo-tab-btn:not(.tab-active):hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.photo-carousel-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.photo-display-area {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+.photo-items-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 100%;
+}
+
+.photo-card {
+  aspect-ratio: 4/3;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.photo-card:hover img {
+  transform: scale(1.05);
+}
+
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+  color: var(--text-dark);
+}
+
+.carousel-nav-btn:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav-btn.nav-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-btn-prev {
+  left: -15px;
+}
+
+.nav-btn-next {
+  right: -15px;
+}
+
+.custom-view-all-link {
+  display: flex;
+  justify-content: center;
+}
+
+.custom-view-all-link a {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: gap 0.2s ease;
+}
+
+.custom-view-all-link a:hover {
+  gap: 0.5rem;
+}
+
+@media (max-width: 1024px) {
+  .custom-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile specific container */
+.custom-mobile-container {
+  
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  /* Hide desktop version on mobile */
+  #custom-cards-container {
+    display: none !important;
+  }
+
+  /* Show mobile version on mobile */
+  .custom-mobile-container {
+    display: block !important;
+  }
+
+  .custom-product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .carousel-nav-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .nav-btn-prev {
+    left: -10px;
+  }
+
+  .nav-btn-next {
+    right: -10px;
+  }
+
+  .custom-progress-steps {
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px;
+  }
+
+  .custom-progress-step {
+    width: 90%;
+    justify-content: flex-start;
+    padding: 12px;
+  }
+
+  .custom-step-label {
+    white-space: normal;
+    text-align: left;
+  }
+
+  /* Mobile optimizations */
+  .custom-card {
+    margin-bottom: 1rem;
+    padding: 1.25rem;
+  }
+
+  .custom-card-title {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .custom-balance-amount {
+    font-size: 1.75rem;
+  }
+
+  .custom-order-dropdown {
+    width: 100%;
+    min-width: auto;
+  }
+
+  /* Documents area mobile fixes */
+  .custom-documents-area > div {
+    padding: 1rem !important;
+  }
+
+  /* Main container with name/status and buttons */
+  .custom-documents-area > div > div {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+  }
+
+  /* Name and status container */
+  .custom-documents-area > div > div > div:first-child {
+    width: 100% !important;
+    margin-bottom: 0.5rem !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Contract/document name */
+  .custom-documents-area > div > div > div:first-child > div:first-child {
+    font-size: 1rem !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Status badge */
+  .custom-documents-area > div > div > div:first-child > div:last-child {
+    display: inline-block !important;
+    width: fit-content !important;
+  }
+
+  /* All buttons/links */
+  .custom-documents-area a {
+    width: 100% !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    margin-right: 0 !important;
+    margin-bottom: 0.5rem !important;
+    display: block !important;
+  }
+
+  .custom-documents-area a:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* Tab buttons responsive */
+  .photo-showcase-tabs {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .photo-tab-btn {
+    flex: 1 1 auto;
+    min-width: fit-content;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+.border-clientportal-border.bg-clientportal-background {
+  display: none !important;
+}
+
+.flex.w-full.items-center.gap-2.ml-4.justify-end #btn-app {
+  display: none !important;
+}
+
+.ml-4.h-full.flex.items-center.justify-center {
+  display: none;
+}
+
+#contracts-view-all {
+  background: var(--primary) !important;
+  padding: 10px 24px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.custom-card .custom-invoice-section {
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.custom-invoice-section > .text-clientportal-font-primary {
+  display: none !important;
+}
+
+.custom-invoice-section .col-span-2.mb-6 {
+  padding: 0 !important;
+}
+
+.custom-invoice-section > div > div > div > .text-clientportal-font-primary {
+  margin-top: 16px !important;
+}
+.custom-invoice-section {
+  width: 100% !important;
+}
+.shortScreen .flex.items-center > .w-10 {
+  width: 0% !important;
+}
+.custom-mobile-nav-logo + button {
+  display: none !important;
+}
+.pr-\[8px\] {
+  padding-right: 16px !important;
+}
+#custom-mobile-cards-container {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.custom-mobile-container + .px-4.box-border {
+  display: none !important;
+}
+
+.grid.h-screen.grid-rows-5.shortScreen > div .px-4.box-border {
+  display: none !important;
+}
+.box-content #btn-profile {
+  display: none !important;
+}
+/*  one Time Singin with gogle and text */
+#google-one-tap1,
+#google-one-tap1 + div + div{
+    display: none!important;
+}
+/*  one Time Singin with gogle and text */
+
+.bg-clientportal-liteBackground .flex.mt-16,
+.bg-clientportal-liteBackground .flex.mt-16:has(div[class*="94vh"]) {
+  display: none !important;
+}
+
+/* ============================================================
+   MFA NEXT - BUTTON STYLES
+   ============================================================ */
+
+/* ============ CARD UPGRADE LINK ============ */
+.card-upgrade-link {
+  display: block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #28a745;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.card-upgrade-link:hover {
+  background-color: #218838;
+}
+
+/* ============ MANAGE SUBSCRIPTION BUTTON ============ */
+.manage-subscription-btn {
+  display: block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.manage-subscription-btn:hover {
+  background-color: #0056b3;
+}
+
+/* ============ CANCELLATION REQUEST BUTTON ============ */
+.cancellation-request-btn {
+  display: block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.cancellation-request-btn:hover {
+  background-color: #c82333;
+}
+
+/* ============ COURSE BUTTONS CONTAINER ============ */
+.course-buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 10px 0;
+}
+
+/* ============ COURSE PAGE BUTTONS ============ */
+.course-download-btn,
+.course-manage-btn,
+.course-contact-btn {
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.course-download-btn {
+  background-color: #28a745;
+}
+
+.course-download-btn:hover {
+  background-color: #218838;
+}
+
+.course-manage-btn {
+  background-color: #007bff;
+}
+
+.course-manage-btn:hover {
+  background-color: #0056b3;
+}
+
+.course-contact-btn {
+  background-color: #dc3545;
+}
+
+.course-contact-btn:hover {
+  background-color: #c82333;
+}
+
+/* ============ PRODUCT COURSE BUTTON ============ */
+.product-course-btn {
+  display: block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.product-course-btn:hover {
+  background-color: #218838;
+}
+
+/* ============ MOBILE BUTTONS CONTAINER ============ */
+.mobile-buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 10px 0;
+}
+
+/* ============ MOBILE BUTTONS ============ */
+.mobile-manage-btn,
+.mobile-contact-btn,
+.mobile-course-btn,
+.mobile-download-btn {
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.mobile-manage-btn {
+  background-color: #007bff;
+}
+
+.mobile-manage-btn:hover {
+  background-color: #0056b3;
+}
+
+.mobile-contact-btn {
+  background-color: #dc3545;
+}
+
+.mobile-contact-btn:hover {
+  background-color: #c82333;
+}
+
+.mobile-course-btn {
+  background-color: #28a745;
+}
+
+.mobile-course-btn:hover {
+  background-color: #218838;
+}
+
+.mobile-download-btn {
+  background-color: #28a745;
+}
+
+.mobile-download-btn:hover {
+  background-color: #218838;
+}
+
+/* ============ COURSE TAG ============ */
+.course-tag {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: #17a2b8;
+  color: white;
+  font-size: 12px;
+  border-radius: 3px;
+  margin-top: 5px;
+}
+
+.has-course-tag {
+  position: relative;
+}
+
+/* ============================================================
+   CLIENT PORTAL - DYNAMIC STYLES (moved from index.js)
+   ============================================================ */
+
+#custom-cards-container {
+  padding-top: 5rem;
+}
+
+#custom-mobile-cards-container {
+  padding-top: 5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.custom-welcome-message {
+  font-size: 2.1rem;
+  color: #64748b;
+  padding: 1rem 0;
+  margin-bottom: 0.5rem;
+}
+
+#custom-mobile-cards-container .custom-welcome-message {
+  font-size: 1.5rem;
+}
+
+.custom-welcome-message strong {
+  color: #1e293b;
+  margin-left: 0.25rem;
+}
+
+.custom-no-data-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.custom-error-icon {
+  margin-bottom: 1.5rem;
+}
+
+.custom-error-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.75rem 0;
+}
+
+.custom-error-message {
+  font-size: 1rem;
+  color: #64748b;
+  margin: 0 0 1.5rem 0;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+.custom-error-retry-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.custom-error-retry-btn:hover {
+  opacity: 0.9;
+}
+
+/* ============ NAV LOGO ============ */
+.custom-nav-logo {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.custom-nav-logo img {
+  max-height: 60px;
+  height: auto;
+  width: auto;
+  max-width: 200px;
+}
+
+/* ============ MOBILE NAV LOGO ============ */
+.custom-mobile-nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.custom-mobile-nav-logo img {
+  max-height: 50px;
+  height: auto;
+  width: auto;
+  max-width: 150px;
+}
+
+/* ============ LOGOUT BUTTONS ============ */
+.custom-desktop-logout-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin: 10px;
+}
+
+.custom-desktop-logout-btn:hover {
+  background: var(--primary-hover);
+}
+
+.custom-mobile-logout-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.custom-mobile-logout-btn:hover {
+  background: var(--primary-hover);
+}
+
+/* ============ MOBILE NAV CONTAINER ============ */
+.custom-mobile-nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+}
+
+/* ============ PRIMARY & SECONDARY BUTTONS ============ */
+.custom-primary-btn {
+  padding: 0.5rem 1rem;
+  background: var(--primary);
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background 0.2s;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+}
+
+.custom-primary-btn:hover {
+  background: var(--primary-hover);
+}
+
+.custom-secondary-btn {
+  padding: 0.5rem 1rem;
+  background: var(--secondary);
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background 0.2s;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+}
+
+.custom-secondary-btn:hover {
+  background: var(--secondary-hover);
+}
+
+#custom-mobile-cards-container + .flex.flex-col.mt-12.p-4{
+    display: none!important;
+}
+
+#file-logo{
+    display: none!important;
+}
+#custom-cards-container{
+    padding: 20px;
+}
+
+#customProgressSteps{
+    display: flex!important;
+    flex-wrap: wrap!important;
+   
+}
+
+#custom-cards-container{
+    padding-top: 4rem!important;
+    padding-left: 20px!important;
+        padding-right: 20px!important;
+}
+@media (max-width: 950px) {
+ .custom-progress-step{
+    flex: 1 1 30%!important;
+}
+   
+    
+}
+
+.flex.flex-col.mt-12.p-4{
+ display: none!important;   
 }
